@@ -55,18 +55,34 @@
       <button class="btn btn-outline" id="letterBtn">Unlock Letter 🔐</button>
       <div class="letter-content" id="secretLetter">
         <p>Hey babe,</p>
-        <p>Happy Monthsary! I built this little corner of the internet just for you because you deserve the world.</p>
-        <p>Thank you for all the belly laughs, the late-night talks, and being my biggest supporter. I'm so lucky to have you by my side.</p>
-        <p class="signature">Forever yours, <br><strong>Me ❤️</strong></p>
+        <p>Happy Monthsary! Ginawa ko 'tong maliit na website na 'to para lang sa'yo, kasi deserve mo ang buong mundo.</p>
+        <p>Salamat sa lahat ng tawanan natin, sa mga late-night talks, at sa pagiging number one supporter ko. Sobrang swerte ko na palagi kitang kasama.</p>
+        <p class="signature">Laging sa'yo, <br><strong>Me ❤️</strong></p>
+        
+        <!-- Voice Note Player -->
+        <div style="margin-top: 20px; text-align: center;">
+          <audio id="voiceNote" src="voice.mp3"></audio>
+          <button class="btn btn-outline" id="playVoiceBtn" style="font-size: 0.95rem;">▶️ Play My Voice Message</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Music Player (Autoplay Added) & Floating Button -->
+  <!-- Music Player & Floating Button -->
   <audio id="bgMusic" loop autoplay>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
   <button class="music-btn" id="musicBtn">🎵</button>
+
+  <!-- Secret Easter Egg Modal Popup -->
+  <div class="easter-egg-modal" id="easterEggModal">
+    <div class="easter-egg-content">
+      <span class="easter-egg-icon">🐣💖</span>
+      <h3>Secret Easter Egg Found!</h3>
+      <p>Hala, nahanap mo yung secret ko! Sabi na nga ba makikita mo e. I love you so much, cutie! 🥰</p>
+      <button class="btn" id="closeEggBtn">Yehey! ❤️</button>
+    </div>
+  </div>
 
   <script src="script.js?v=2"></script>
 </body>
