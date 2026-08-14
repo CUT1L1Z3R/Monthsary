@@ -132,6 +132,11 @@ if (photoGallery) {
     img.className = 'gallery-img';
     img.alt = `Memory ${i}`;
     img.loading = 'lazy'; 
+    
+    // OPTIMIZATION: Locks the size so the screen doesn't jump while loading!
+    img.width = 200;
+    img.height = 260;
+    
     photoGallery.appendChild(img);
   }
 }
@@ -169,10 +174,12 @@ const bgMusic = document.getElementById('bgMusic');
 let isPlaying = false;
 
 if (musicBtn && bgMusic) {
+  // Try to autoplay the moment she lands on the page
   bgMusic.play().then(() => {
     isPlaying = true;
     musicBtn.textContent = '⏸️'; 
   }).catch(() => {
+    // If blocked, wait for her first tap on the screen
     isPlaying = false;
     musicBtn.textContent = '🎵'; 
     
@@ -188,6 +195,7 @@ if (musicBtn && bgMusic) {
     document.addEventListener('touchstart', startAudioOnFirstTouch);
   });
 
+  // Manual play/pause logic
   musicBtn.addEventListener('click', (e) => {
     e.stopPropagation(); 
     if (isPlaying) {
@@ -253,7 +261,7 @@ if (playVoiceBtn && voiceNote) {
 }
 
 // --- 9. Secret Easter Egg Logic ---
-const mainTitle = document.querySelector('.card h1');
+const mainTitle = document.getElementById('easterEggTrigger');
 const easterEggModal = document.getElementById('easterEggModal');
 const closeEggBtn = document.getElementById('closeEggBtn');
 
