@@ -8,7 +8,7 @@ if (catchMeBtn) {
     "Too slow! 🐢",
     "Try again! 🤭",
     "Almost got it! 🏃‍♂️",
-    "Okay, okay, click me now! 💖"
+    "Okay, okay, click me now! 🖤"
   ];
 
   catchMeBtn.addEventListener('click', () => {
@@ -67,7 +67,7 @@ if (noteBtn && letterBtn) {
   });
 }
 
-// --- 3. Floating Background ---
+// --- 3. Floating Background (UPDATED: Black and White) ---
 const canvas = document.getElementById('hearts');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -91,7 +91,9 @@ if (canvas) {
       this.size = Math.random() * 6 + 3; 
       this.speedY = Math.random() * 1 + 0.5;
       this.opacity = Math.random() * 0.4 + 0.1;
-      this.color = Math.random() > 0.5 ? '#ffffff' : '#ffb3c6';
+      
+      // Makes the floating particles randomly black or white
+      this.color = Math.random() > 0.5 ? '#ffffff' : '#000000';
     }
     update() {
       this.y -= this.speedY;
@@ -119,7 +121,7 @@ if (canvas) {
   animate();
 }
 
-// --- 4. Auto-Generate Photo Gallery, Fullscreen & Auto-Scroll ---
+// --- 4. Auto-Generate Photo Gallery (UPDATED: Slower Scroll) ---
 const photoGallery = document.getElementById('photoGallery');
 const photoModal = document.getElementById('photoModal');
 const expandedImg = document.getElementById('expandedImg');
@@ -163,13 +165,14 @@ if (photoGallery) {
   let autoScrollInterval;
   
   const startAutoScroll = () => {
+    // Increased from 2500 (2.5s) to 4500 (4.5s) so it scrolls much slower!
     autoScrollInterval = setInterval(() => {
       if (photoGallery.scrollLeft + photoGallery.clientWidth >= photoGallery.scrollWidth - 10) {
         photoGallery.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
         photoGallery.scrollBy({ left: 212, behavior: 'smooth' });
       }
-    }, 2500); 
+    }, 4500); 
   };
 
   startAutoScroll();
@@ -250,12 +253,16 @@ if (musicBtn && bgMusic) {
   });
 }
 
-// --- 7. Tap-to-Heart Effect ---
+// --- 7. Tap-to-Heart Effect (UPDATED: Black & White) ---
 document.addEventListener('click', (e) => {
   if(e.target.tagName.toLowerCase() === 'button' || e.target.tagName.toLowerCase() === 'img') return;
 
   const heart = document.createElement('div');
-  heart.innerHTML = '💖';
+  
+  // Randomly picks between a black heart and a white heart when she taps
+  const heartEmojis = ['🖤', '🤍'];
+  heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  
   heart.className = 'tap-heart';
   
   heart.style.left = `${e.pageX}px`;
@@ -268,7 +275,7 @@ document.addEventListener('click', (e) => {
   }, 1200);
 });
 
-// --- 8. Voice Note Player (Pauses BG Music) ---
+// --- 8. Voice Note Player ---
 const playVoiceBtn = document.getElementById('playVoiceBtn');
 const voiceNote = document.getElementById('voiceNote');
 
