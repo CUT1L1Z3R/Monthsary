@@ -43,12 +43,11 @@ if (noteBtn && letterBtn) {
   const secretLetter = document.getElementById('secretLetter');
   
   const notes = [
-    "Yung tawa mo ang pinakapaborito kong tunog sa buong mundo.",
-    "Ang cute mo tignan kapag naka-focus ka sa isang bagay.",
-    "Yung galing mo na palaging pagaanin ang mood ko.",
-    "Kahit yung pinaka-boring na gawain nagiging masaya basta kasama kita.",
-    "Yung napakabuti mong puso at kung paano ka mag-alaga sa mga tao sa paligid mo.",
-    "Dahil ikaw 'yan, at walang sinuman ang makakapantay sa'yo."
+    "Ikaw lang wala ng iba nag papatibok ng puso ko at utak din ehhehe jk",
+    "Kahit maldita asawa ko mahal ko parin yan 😘❤️",
+    "I LOVE YOU SO MUCH ASAWA NAKO 😘❤️😘❤️😘❤️",
+    "Kahit seloso ako subra you still accept me that's why I love you 😘❤️",
+    "Will you still accept me kahit ganito ugali ko? (Accept nalang wala kang choice AAHAHHAHAH)"
   ];
 
   noteBtn.addEventListener('click', () => {
