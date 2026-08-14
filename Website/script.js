@@ -163,13 +163,37 @@ if (daysEl) {
   updateTimer(); 
 }
 
-// --- 6. Music Player Toggle ---
+// --- 6. Smart Autoplay & Music Player Toggle ---
 const musicBtn = document.getElementById('musicBtn');
 const bgMusic = document.getElementById('bgMusic');
 let isPlaying = false;
 
 if (musicBtn && bgMusic) {
-  musicBtn.addEventListener('click', () => {
+  // 1. Try to autoplay the moment she lands on the page
+  bgMusic.play().then(() => {
+    isPlaying = true;
+    musicBtn.textContent = '⏸️'; // Set to pause icon if it worked
+  }).catch(() => {
+    // 2. If her phone blocks autoplay, wait for her first tap on the screen
+    isPlaying = false;
+    musicBtn.textContent = '🎵'; 
+    
+    // Create a one-time listener that starts the music on her first touch
+    const startAudioOnFirstTouch = () => {
+      bgMusic.play();
+      isPlaying = true;
+      musicBtn.textContent = '⏸️';
+      document.removeEventListener('click', startAudioOnFirstTouch);
+      document.removeEventListener('touchstart', startAudioOnFirstTouch);
+    };
+    
+    document.addEventListener('click', startAudioOnFirstTouch);
+    document.addEventListener('touchstart', startAudioOnFirstTouch);
+  });
+
+  // 3. The manual play/pause button logic
+  musicBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Stops the button tap from triggering the background tap
     if (isPlaying) {
       bgMusic.pause();
       musicBtn.textContent = '🎵'; 
