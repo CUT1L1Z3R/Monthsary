@@ -119,8 +119,11 @@ if (canvas) {
   animate();
 }
 
-// --- 4. Auto-Generate Photo Gallery ---
+// --- 4. Auto-Generate Photo Gallery, Fullscreen & Auto-Scroll ---
 const photoGallery = document.getElementById('photoGallery');
+const photoModal = document.getElementById('photoModal');
+const expandedImg = document.getElementById('expandedImg');
+const closePhotoBtn = document.getElementById('closePhotoBtn');
 
 if (photoGallery) {
   const totalPhotos = 38; 
@@ -133,12 +136,56 @@ if (photoGallery) {
     img.loading = 'lazy'; 
     img.width = 200;
     img.height = 260;
+    img.style.cursor = 'pointer'; 
+    
+    img.addEventListener('click', () => {
+      if (photoModal && expandedImg) {
+        expandedImg.src = img.src;
+        photoModal.classList.add('active');
+      }
+    });
     
     photoGallery.appendChild(img);
   }
+
+  if (photoModal && closePhotoBtn) {
+    closePhotoBtn.addEventListener('click', () => {
+      photoModal.classList.remove('active');
+    });
+    
+    photoModal.addEventListener('click', (e) => {
+      if (e.target === photoModal) {
+        photoModal.classList.remove('active');
+      }
+    });
+  }
+
+  let autoScrollInterval;
+  
+  const startAutoScroll = () => {
+    autoScrollInterval = setInterval(() => {
+      if (photoGallery.scrollLeft + photoGallery.clientWidth >= photoGallery.scrollWidth - 10) {
+        photoGallery.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        photoGallery.scrollBy({ left: 212, behavior: 'smooth' });
+      }
+    }, 2500); 
+  };
+
+  startAutoScroll();
+
+  photoGallery.addEventListener('touchstart', () => clearInterval(autoScrollInterval));
+  photoGallery.addEventListener('mouseenter', () => clearInterval(autoScrollInterval)); 
+
+  photoGallery.addEventListener('touchend', () => {
+    setTimeout(startAutoScroll, 3000); 
+  });
+  photoGallery.addEventListener('mouseleave', () => {
+    setTimeout(startAutoScroll, 3000); 
+  });
 }
 
-// --- 5. Relationship Timer (Started April 21, 2026) ---
+// --- 5. Relationship Timer ---
 const daysEl = document.getElementById('days');
 
 if (daysEl) {
