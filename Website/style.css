@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
 
 :root {
-  --bg-gradient: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
-  --card-bg: rgba(255, 255, 255, 0.65);
-  --card-border: rgba(255, 255, 255, 0.8);
-  --text-main: #5c3a41;
-  --text-muted: #8a646c;
-  --accent: #ff6b8b;
-  --accent-shadow: rgba(255, 107, 139, 0.4);
+  --bg-gradient: linear-gradient(135deg, #e4e4e7 0%, #f4f4f5 100%); /* Soft silver/gray minimalist gradient */
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(255, 255, 255, 0.9);
+  --text-main: #18181b; /* Rich, modern black */
+  --text-muted: #71717a; /* Sophisticated cool gray */
+  --accent: #18181b; /* Sleek black buttons and badges */
+  --accent-shadow: rgba(0, 0, 0, 0.15);
 }
 
 * {
