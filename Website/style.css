@@ -74,7 +74,7 @@ canvas#hearts {
 .card:nth-child(5) { animation-delay: 0.7s; }
 
 .icon-wrapper { font-size: 3rem; margin-bottom: 12px; animation: float 3s ease-in-out infinite; }
-h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); cursor: pointer; }
 h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
 
 .date-badge { display: inline-block; background: rgba(255, 255, 255, 0.9); color: var(--accent); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 16px; }
@@ -113,6 +113,47 @@ p { font-size: 1rem; line-height: 1.5; color: var(--text-muted); font-weight: 50
 
 /* --- Tap-to-Heart Animation --- */
 .tap-heart { position: absolute; font-size: 1.8rem; pointer-events: none; transform: translate(-50%, -50%); animation: floatUpHeart 1.2s ease-out forwards; z-index: 9999; }
+
+/* --- Easter Egg Modal Styles --- */
+.easter-egg-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.easter-egg-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.easter-egg-content {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 24px;
+  border-radius: 28px;
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  border: 2px solid var(--accent);
+  transform: scale(0.8);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.easter-egg-modal.active .easter-egg-content {
+  transform: scale(1);
+}
+
+.easter-egg-icon { font-size: 3rem; display: block; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+.easter-egg-content h3 { color: var(--accent); margin-bottom: 8px; font-size: 1.3rem; }
+.easter-egg-content p { margin-bottom: 20px; color: var(--text-main); font-size: 0.95rem; line-height: 1.4; }
 
 /* --- Keyframes --- */
 @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
