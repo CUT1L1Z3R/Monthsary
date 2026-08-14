@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(255, 255, 255, 0.8);
+  --text-main: #5c3a41;
+  --text-muted: #8a646c;
+  --accent: #ff6b8b;
+  --accent-shadow: rgba(255, 107, 139, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Font updated to support Linux emojis natively! */
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+body {
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  min-height: -webkit-fill-available; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Perfectly centers the landing page */
+  color: var(--text-main);
+  overflow-x: hidden;
+  padding: max(20px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+}
+
+canvas#hearts {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Landing Page Styles --- */
+.landing-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.landing-title {
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  text-align: center;
+  animation: slideDown 0.6s ease-out;
+}
+
+.landing-text {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  animation: slideDown 0.8s ease-out;
+}
+
+.catch-btn {
+  transition: top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              background 0.2s;
+  width: auto !important;
+  min-width: 160px;
+  z-index: 20;
+  position: relative;
+}
+
+/* --- Main Page Styles --- */
+.container {
+  width: 100%;
+  max-width: 400px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: auto 0;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px) saturate(120%);
+  border-radius: 32px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--card-border);
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Cascading load animations for all 4 cards */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.25s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+.card:nth-child(4) { animation-delay: 0.55s; }
+
+.icon-wrapper { font-size: 3rem; margin-bottom: 12px; animation: float 3s ease-in-out infinite; }
+h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+
+.date-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+p { font-size: 1rem; line-height: 1.5; color: var(--text-muted); font-weight: 500; }
+.subtitle { font-size: 0.9rem; opacity: 0.8; }
+
+/* --- Photo Gallery Styles --- */
+.gallery-container {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 10px 5px 20px 5px;
+  margin-top: 15px;
+  scroll-snap-type: x mandatory; 
+  scrollbar-width: none; 
+}
+
+.gallery-container::-webkit-scrollbar {
+  display: none; 
+}
+
+.gallery-img {
+  flex: 0 0 200px; /* Controls the card width */
+  height: 260px;   /* Locks the height so it doesn't stretch too tall */
+  object-fit: cover;
+  border-radius: 16px;
+  scroll-snap-align: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.4); 
+}
+
+/* --- Interactive Note Box --- */
+.note-box {
+  margin: 20px 0; min-height: 70px; display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, 0.7); border-radius: 20px; padding: 16px; border: 1px dashed var(--accent);
+}
+
+.note-text { font-size: 1.1rem; font-weight: 600; color: var(--accent); transition: all 0.3s; }
+
+/* --- Buttons --- */
+.btn {
+  background: var(--accent); color: white; border: none; min-height: 52px; width: 100%;
+  padding: 0 24px; font-size: 1.05rem; font-weight: 700; border-radius: 100px;
+  cursor: pointer; box-shadow: 0 8px 20px var(--accent-shadow); transition: transform 0.2s;
+}
+
+.btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); box-shadow: none; }
+.btn:active { transform: scale(0.92); }
+
+/* --- Secret Letter --- */
+.letter-content { display: none; margin-top: 24px; padding-top: 24px; border-top: 2px dashed rgba(255,255,255,0.6); text-align: left; }
+.letter-content p { margin-bottom: 12px; }
+.letter-content .signature { margin-top: 20px; font-size: 1.1rem; color: var(--accent); }
+.letter-content.active { display: block; animation: slideDown 0.4s ease-out; }
+
+/* --- Keyframe Animations --- */
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }

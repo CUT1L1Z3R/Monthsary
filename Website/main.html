@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Happy Monthsary! ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Hearts Background -->
+  <canvas id="hearts"></canvas>
+
+  <div class="container">
+    <!-- Header Card -->
+    <div class="card">
+      <div class="icon-wrapper">💖</div>
+      <div class="date-badge">August 21, 2026</div>
+      <h1>Happy Monthsary!</h1>
+      <p>Every single day with you just keeps getting better and better.</p>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="card">
+      <h2>Our Memories 📸</h2>
+      <p class="subtitle">Swipe to see some of my favorites!</p>
+      
+      <!-- JavaScript will automatically load the 38 photos from your memories folder in here! -->
+      <div class="gallery-container" id="photoGallery"></div>
+    </div>
+
+    <!-- Interactive Love Note Jar -->
+    <div class="card">
+      <h2>Reasons I Love You</h2>
+      <p class="subtitle">Tap the button for a little reminder ✨</p>
+      <div class="note-box">
+        <div class="note-text" id="loveNote">Tap the button below! 👇</div>
+      </div>
+      <button class="btn" id="noteBtn">Pick a Note 💌</button>
+    </div>
+
+    <!-- Secret Love Letter -->
+    <div class="card">
+      <h2>A Secret Message</h2>
+      <button class="btn btn-outline" id="letterBtn">Unlock Letter 🔐</button>
+      <div class="letter-content" id="secretLetter">
+        <p>Hey babe,</p>
+        <p>Happy Monthsary! I built this little corner of the internet just for you because you deserve the world.</p>
+        <p>Thank you for all the belly laughs, the late-night talks, and being my biggest supporter. I'm so lucky to have you by my side.</p>
+        <p class="signature">Forever yours, <br><strong>Me ❤️</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
