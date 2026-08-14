@@ -43,12 +43,12 @@ if (noteBtn && letterBtn) {
   const secretLetter = document.getElementById('secretLetter');
   
   const notes = [
-    "Your laugh is literally my favorite sound in the world.",
-    "How cute you look when you're focusing on something.",
-    "The way you always know how to brighten up my mood.",
-    "You make even the most boring errands fun.",
-    "Your big heart and how caring you are to everyone.",
-    "Simply because you're you, and nobody else compares."
+    "Yung tawa mo ang pinakapaborito kong tunog sa buong mundo.",
+    "Ang cute mo tignan kapag naka-focus ka sa isang bagay.",
+    "Yung galing mo na palaging pagaanin ang mood ko.",
+    "Kahit yung pinaka-boring na gawain nagiging masaya basta kasama kita.",
+    "Yung napakabuti mong puso at kung paano ka mag-alaga sa mga tao sa paligid mo.",
+    "Dahil ikaw 'yan, at walang sinuman ang makakapantay sa'yo."
   ];
 
   noteBtn.addEventListener('click', () => {
@@ -169,16 +169,13 @@ const bgMusic = document.getElementById('bgMusic');
 let isPlaying = false;
 
 if (musicBtn && bgMusic) {
-  // 1. Try to autoplay the moment she lands on the page
   bgMusic.play().then(() => {
     isPlaying = true;
-    musicBtn.textContent = '⏸️'; // Set to pause icon if it worked
+    musicBtn.textContent = '⏸️'; 
   }).catch(() => {
-    // 2. If her phone blocks autoplay, wait for her first tap on the screen
     isPlaying = false;
     musicBtn.textContent = '🎵'; 
     
-    // Create a one-time listener that starts the music on her first touch
     const startAudioOnFirstTouch = () => {
       bgMusic.play();
       isPlaying = true;
@@ -191,9 +188,8 @@ if (musicBtn && bgMusic) {
     document.addEventListener('touchstart', startAudioOnFirstTouch);
   });
 
-  // 3. The manual play/pause button logic
   musicBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // Stops the button tap from triggering the background tap
+    e.stopPropagation(); 
     if (isPlaying) {
       bgMusic.pause();
       musicBtn.textContent = '🎵'; 
@@ -222,3 +218,57 @@ document.addEventListener('click', (e) => {
     heart.remove();
   }, 1200);
 });
+
+// --- 8. Voice Note Player ---
+const playVoiceBtn = document.getElementById('playVoiceBtn');
+const voiceNote = document.getElementById('voiceNote');
+
+if (playVoiceBtn && voiceNote) {
+  let wasMusicPlaying = false; 
+
+  playVoiceBtn.addEventListener('click', () => {
+    if (voiceNote.paused) {
+      if (bgMusic && !bgMusic.paused) {
+        bgMusic.pause();
+        musicBtn.textContent = '🎵';
+        wasMusicPlaying = true; 
+      }
+      
+      voiceNote.play();
+      playVoiceBtn.textContent = '⏸️ Pause Message';
+    } else {
+      voiceNote.pause();
+      playVoiceBtn.textContent = '▶️ Play My Voice Message';
+    }
+  });
+
+  voiceNote.addEventListener('ended', () => {
+     playVoiceBtn.textContent = '▶️ Play My Voice Message';
+     if (wasMusicPlaying && bgMusic) {
+        bgMusic.play();
+        musicBtn.textContent = '⏸️';
+        wasMusicPlaying = false;
+     }
+  });
+}
+
+// --- 9. Secret Easter Egg Logic ---
+const mainTitle = document.querySelector('.card h1');
+const easterEggModal = document.getElementById('easterEggModal');
+const closeEggBtn = document.getElementById('closeEggBtn');
+
+if (mainTitle && easterEggModal && closeEggBtn) {
+  let titleClickCount = 0;
+
+  mainTitle.addEventListener('click', () => {
+    titleClickCount++;
+    if (titleClickCount === 5) {
+      easterEggModal.classList.add('active');
+      titleClickCount = 0; 
+    }
+  });
+
+  closeEggBtn.addEventListener('click', () => {
+    easterEggModal.classList.remove('active');
+  });
+}
