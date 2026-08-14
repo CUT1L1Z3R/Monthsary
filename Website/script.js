@@ -1,4 +1,4 @@
-// --- 1. Catch Me Button Logic (Runs only on index.html) ---
+// --- 1. Catch Me Button Logic ---
 const catchMeBtn = document.getElementById('catchMeBtn');
 
 if (catchMeBtn) {
@@ -34,7 +34,7 @@ if (catchMeBtn) {
   });
 }
 
-// --- 2. Main Page Logic (Runs only on main.html) ---
+// --- 2. Main Page Logic (Custom Notes & Letter) ---
 const noteBtn = document.getElementById('noteBtn');
 const letterBtn = document.getElementById('letterBtn');
 
@@ -67,7 +67,7 @@ if (noteBtn && letterBtn) {
   });
 }
 
-// --- 3. Floating Background (Runs on BOTH pages) ---
+// --- 3. Floating Background ---
 const canvas = document.getElementById('hearts');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -131,8 +131,6 @@ if (photoGallery) {
     img.className = 'gallery-img';
     img.alt = `Memory ${i}`;
     img.loading = 'lazy'; 
-    
-    // OPTIMIZATION: Locks the size so the screen doesn't jump while loading!
     img.width = 200;
     img.height = 260;
     
@@ -140,7 +138,7 @@ if (photoGallery) {
   }
 }
 
-// --- 5. Relationship Timer ---
+// --- 5. Relationship Timer (Started April 21, 2026) ---
 const daysEl = document.getElementById('days');
 
 if (daysEl) {
@@ -173,12 +171,10 @@ const bgMusic = document.getElementById('bgMusic');
 let isPlaying = false;
 
 if (musicBtn && bgMusic) {
-  // Try to autoplay the moment she lands on the page
   bgMusic.play().then(() => {
     isPlaying = true;
     musicBtn.textContent = '⏸️'; 
   }).catch(() => {
-    // If blocked, wait for her first tap on the screen
     isPlaying = false;
     musicBtn.textContent = '🎵'; 
     
@@ -194,7 +190,6 @@ if (musicBtn && bgMusic) {
     document.addEventListener('touchstart', startAudioOnFirstTouch);
   });
 
-  // Manual play/pause logic
   musicBtn.addEventListener('click', (e) => {
     e.stopPropagation(); 
     if (isPlaying) {
@@ -226,7 +221,7 @@ document.addEventListener('click', (e) => {
   }, 1200);
 });
 
-// --- 8. Voice Note Player ---
+// --- 8. Voice Note Player (Pauses BG Music) ---
 const playVoiceBtn = document.getElementById('playVoiceBtn');
 const voiceNote = document.getElementById('voiceNote');
 
