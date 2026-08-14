@@ -3,20 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Hi Maldita 😘</title>
-  <link rel="stylesheet" href="style.css?v=4">
+  <title>Happy 4th Monthsary! ❤️</title>
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
   <!-- Floating Hearts Background -->
   <canvas id="hearts"></canvas>
 
-  <div class="landing-page" id="landingPage">
-    <h1 class="landing-title">Hi Maldita 😘</h1>
-    <p class="landing-text">I made something special for you.</p>
-    <button class="btn catch-btn" id="catchMeBtn">Open Me 💝</button>
+  <div class="container">
+    <!-- Header Card -->
+    <div class="card">
+      <div class="icon-wrapper">💖</div>
+      <div class="date-badge">August 21, 2026</div>
+      <h1 id="easterEggTrigger" style="cursor: pointer; user-select: none; -webkit-user-select: none;">Happy 4th Monthsary!</h1>
+      <p style="font-size: 0.8rem; color: var(--accent); opacity: 0.85; margin-top: -4px; margin-bottom: 8px; font-weight: 600;">(Tap me 5 times... 👀)</p>
+      <p>Every single day with you just keeps getting better and better.</p>
+    </div>
+
+    <!-- Relationship Timer Card -->
+    <div class="card">
+      <h2>Time Together ⏳</h2>
+      <p class="subtitle">Since April 21, 2026</p>
+      <div class="timer-container">
+        <div class="time-box"><span id="days">00</span><small>Days</small></div>
+        <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+        <div class="time-box"><span id="mins">00</span><small>Mins</small></div>
+        <div class="time-box"><span id="secs">00</span><small>Secs</small></div>
+      </div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="card">
+      <h2>Our Memories 📸</h2>
+      <p class="subtitle">Swipe to see some of my favorites!</p>
+      <div class="gallery-container" id="photoGallery"></div>
+    </div>
+
+    <!-- Interactive Love Note Jar -->
+    <div class="card">
+      <h2>Reasons I Love You</h2>
+      <p class="subtitle">Tap the button for a little reminder ✨</p>
+      <div class="note-box">
+        <div class="note-text" id="loveNote">Tap the button below! 👇</div>
+      </div>
+      <button class="btn" id="noteBtn">Pick a Note 💌</button>
+    </div>
+
+    <!-- Secret Love Letter & Voice Note -->
+    <div class="card">
+      <h2>A Secret Message</h2>
+      <button class="btn btn-outline" id="letterBtn">Unlock Letter 🔐</button>
+      <div class="letter-content" id="secretLetter">
+        <p>Hey babe,</p>
+        <p>Happy 4th Monthsary! Ginawa ko 'tong maliit na website na 'to para lang sa'yo, kasi deserve mo ang buong mundo.</p>
+        <p>Salamat sa lahat ng tawanan natin, sa mga late-night talks, at sa pagiging number one supporter ko. Sobrang swerte ko na palagi kitang kasama.</p>
+        <p class="signature">Laging sa'yo, <br><strong>Me ❤️</strong></p>
+        
+        <div style="margin-top: 20px; text-align: center;">
+          <audio id="voiceNote" src="voice.mp3"></audio>
+          <button class="btn btn-outline" id="playVoiceBtn" style="font-size: 0.95rem;">▶️ Play My Voice Message</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script src="script.js?v=4"></script>
+  <!-- Music Player & Floating Button -->
+  <audio id="bgMusic" loop autoplay>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn" id="musicBtn">🎵</button>
+
+  <!-- Fullscreen Photo Modal -->
+  <div class="photo-modal" id="photoModal">
+    <span class="close-photo" id="closePhotoBtn">&times;</span>
+    <img class="photo-modal-content" id="expandedImg">
+  </div>
+
+  <!-- Secret Easter Egg Modal Popup -->
+  <div class="easter-egg-modal" id="easterEggModal">
+    <div class="easter-egg-content">
+      <span class="easter-egg-icon">🐣💖</span>
+      <h3>Secret Easter Egg Found!</h3>
+      <p>Hala, nahanap mo yung secret ko! Sabi na nga ba makikita mo e. I love you so much, cutie! 🥰</p>
+      <button class="btn" id="closeEggBtn">Yehey! ❤️</button>
+    </div>
+  </div>
+
+  <script src="script.js?v=6"></script>
 </body>
 </html>
