@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Happy Monthsary! ❤️</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- Cache-busting fix applied here -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -20,7 +21,7 @@
       <p>Every single day with you just keeps getting better and better.</p>
     </div>
 
-    <!-- NEW: Relationship Timer Card -->
+    <!-- Relationship Timer Card -->
     <div class="card">
       <h2>Time Together ⏳</h2>
       <p class="subtitle">Since April 21, 2026</p>
@@ -62,12 +63,13 @@
     </div>
   </div>
 
-  <!-- NEW: Music Player & Floating Button -->
+  <!-- Music Player & Floating Button -->
   <audio id="bgMusic" loop>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
   <button class="music-btn" id="musicBtn">🎵</button>
 
-  <script src="script.js"></script>
+  <!-- Cache-busting fix applied here -->
+  <script src="script.js?v=2"></script>
 </body>
 </html>
