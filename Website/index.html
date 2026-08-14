@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Hey Cutie...</title>
+  <title>Happy Monthsary! ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,11 +11,62 @@
   <!-- Floating Hearts Background -->
   <canvas id="hearts"></canvas>
 
-  <div class="landing-page" id="landingPage">
-    <h1 class="landing-title">Hey cutie... 👋</h1>
-    <p class="landing-text">I made something special for you.</p>
-    <button class="btn catch-btn" id="catchMeBtn">Open Me 💝</button>
+  <div class="container">
+    <!-- Header Card -->
+    <div class="card">
+      <div class="icon-wrapper">💖</div>
+      <div class="date-badge">August 21, 2026</div>
+      <h1>Happy Monthsary!</h1>
+      <p>Every single day with you just keeps getting better and better.</p>
+    </div>
+
+    <!-- NEW: Relationship Timer Card -->
+    <div class="card">
+      <h2>Time Together ⏳</h2>
+      <p class="subtitle">Since April 21, 2026</p>
+      <div class="timer-container">
+        <div class="time-box"><span id="days">00</span><small>Days</small></div>
+        <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+        <div class="time-box"><span id="mins">00</span><small>Mins</small></div>
+        <div class="time-box"><span id="secs">00</span><small>Secs</small></div>
+      </div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="card">
+      <h2>Our Memories 📸</h2>
+      <p class="subtitle">Swipe to see some of my favorites!</p>
+      <div class="gallery-container" id="photoGallery"></div>
+    </div>
+
+    <!-- Interactive Love Note Jar -->
+    <div class="card">
+      <h2>Reasons I Love You</h2>
+      <p class="subtitle">Tap the button for a little reminder ✨</p>
+      <div class="note-box">
+        <div class="note-text" id="loveNote">Tap the button below! 👇</div>
+      </div>
+      <button class="btn" id="noteBtn">Pick a Note 💌</button>
+    </div>
+
+    <!-- Secret Love Letter -->
+    <div class="card">
+      <h2>A Secret Message</h2>
+      <button class="btn btn-outline" id="letterBtn">Unlock Letter 🔐</button>
+      <div class="letter-content" id="secretLetter">
+        <p>Hey babe,</p>
+        <p>Happy Monthsary! I built this little corner of the internet just for you because you deserve the world.</p>
+        <p>Thank you for all the belly laughs, the late-night talks, and being my biggest supporter. I'm so lucky to have you by my side.</p>
+        <p class="signature">Forever yours, <br><strong>Me ❤️</strong></p>
+      </div>
+    </div>
   </div>
+
+  <!-- NEW: Music Player & Floating Button -->
+  <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn" id="musicBtn">🎵</button>
 
   <script src="script.js"></script>
 </body>
