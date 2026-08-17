@@ -18,7 +18,6 @@
       <div class="icon-wrapper">💖</div>
       <div class="date-badge">August 21, 2026</div>
       
-      <!-- UPDATED TITLE WITH ASAWA KO AND EMOJI -->
       <h1 id="easterEggTrigger" style="cursor: pointer; user-select: none; -webkit-user-select: none;">Happy 4th Monthsary Asawa ko 😘</h1>
       <p style="font-size: 0.8rem; color: var(--accent); opacity: 0.85; margin-top: -4px; margin-bottom: 8px; font-weight: 600;">(Tap me 5 times... 👀)</p>
       
@@ -42,6 +41,24 @@
       <h2>Our Memories 📸</h2>
       <p class="subtitle">Swipe to see some of my favorites!</p>
       <div class="gallery-container" id="photoGallery"></div>
+    </div>
+
+    <!-- Relationship Quiz Card -->
+    <div class="card" id="quizCard">
+      <h2>Asawa Relationship Quiz 🧩</h2>
+      <p class="subtitle">Gaano mo kakilala ang seloso mong asawa?</p>
+      
+      <div id="quizContainer">
+        <div id="quizQuestion" style="font-weight: bold; font-size: 1.05rem; margin-bottom: 12px;"></div>
+        <div id="quizOptions" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        <div id="quizFeedback" style="margin-top: 12px; font-weight: 600; min-height: 24px;"></div>
+      </div>
+      
+      <div id="quizResult" style="display: none; text-align: center;">
+        <h3 id="quizScoreText" style="font-size: 1.3rem; margin-bottom: 8px;"></h3>
+        <p id="quizResultMessage" style="margin-bottom: 15px;"></p>
+        <button class="btn" id="restartQuizBtn">Try Again 🔄</button>
+      </div>
     </div>
 
     <!-- Interactive Love Note Jar -->
@@ -73,9 +90,8 @@
     </div>
   </div>
 
- <!-- Music Player & Floating Button -->
+  <!-- Music Player & Floating Button -->
   <audio id="bgMusic" loop autoplay>
-    <!-- Change this back to song.mp3 -->
     <source src="song.mp3" type="audio/mpeg">
   </audio>
   <button class="music-btn" id="musicBtn">🎵</button>
@@ -86,7 +102,7 @@
     <img class="photo-modal-content" id="expandedImg">
   </div>
 
- <!-- Secret Easter Egg Modal Popup -->
+  <!-- Secret Easter Egg Modal Popup -->
   <div class="easter-egg-modal" id="easterEggModal">
     <div class="easter-egg-content">
       <span class="easter-egg-icon">🐣💖</span>
@@ -94,7 +110,6 @@
       
       <p>Di ka dapat nandito ngayon, nakita mo na pinakamaganda kong kabet ahahah ajokee 😜<br><br>anyways ILOVE YOU SO MUCH ASAWA KO 😘😘😘</p>
       
-      <!-- YOUR "KABET" PHOTO GOES RIGHT HERE -->
       <img src="kabet.png" alt="Kabet Joke" style="width: 100%; max-width: 200px; border-radius: 12px; margin-bottom: 15px; border: 2px dashed var(--accent);">
       
       <button class="btn" id="closeEggBtn">Yehey! ❤️</button>
