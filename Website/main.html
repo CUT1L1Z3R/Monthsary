@@ -13,7 +13,7 @@
   <canvas id="hearts"></canvas>
 
   <div class="container">
-  <!-- Header Card -->
+    <!-- Header Card -->
     <div class="card">
       <div class="icon-wrapper">💖</div>
       <div class="date-badge">August 21, 2026</div>
@@ -43,24 +43,6 @@
       <div class="gallery-container" id="photoGallery"></div>
     </div>
 
-    <!-- Relationship Quiz Card -->
-    <div class="card" id="quizCard">
-      <h2>Asawa Relationship Quiz 🧩</h2>
-      <p class="subtitle">Gaano mo kakilala ang seloso mong asawa?</p>
-      
-      <div id="quizContainer">
-        <div id="quizQuestion" style="font-weight: bold; font-size: 1.05rem; margin-bottom: 12px;"></div>
-        <div id="quizOptions" style="display: flex; flex-direction: column; gap: 8px;"></div>
-        <div id="quizFeedback" style="margin-top: 12px; font-weight: 600; min-height: 24px;"></div>
-      </div>
-      
-      <div id="quizResult" style="display: none; text-align: center;">
-        <h3 id="quizScoreText" style="font-size: 1.3rem; margin-bottom: 8px;"></h3>
-        <p id="quizResultMessage" style="margin-bottom: 15px;"></p>
-        <button class="btn" id="restartQuizBtn">Try Again 🔄</button>
-      </div>
-    </div>
-
     <!-- Interactive Love Note Jar -->
     <div class="card">
       <h2>Reasons I Love You</h2>
@@ -75,7 +57,7 @@
     <div class="card">
       <h2>A Secret Message</h2>
       <button class="btn btn-outline" id="letterBtn">Unlock Letter 🔐</button>
-     <div class="letter-content" id="secretLetter">
+      <div class="letter-content" id="secretLetter">
         <p>Hi Asawa ko,</p>
         <p>Happy 4th Monthsary! Ginawa ko 'tong maliit na website na 'to para sa'yo, kasi kahit maldita ka minsan, ikaw pa rin ang pinakamagandang nangyari sa akin.</p>
         <p>Salamat kasi kahit sobrang seloso ako at minsan may topak din, you still accept me and love me. Thank you sa lahat ng tawanan, late-night talks, at sa pag-intindi sa ugali ko (wala ka na kasing choice hahaha).</p>
@@ -86,6 +68,24 @@
           <audio id="voiceNote" src="voice.mp3"></audio>
           <button class="btn btn-outline" id="playVoiceBtn" style="font-size: 0.95rem;">▶️ Play My Voice Message</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Relationship Quiz Card (MOVED HERE) -->
+    <div class="card" id="quizCard">
+      <h2>Asawa Relationship Quiz 🧩</h2>
+      <p class="subtitle">Gaano mo kakilala ang seloso mong asawa?</p>
+      
+      <div id="quizContainer">
+        <div id="quizQuestion" style="font-weight: bold; font-size: 1.05rem; margin-bottom: 12px;"></div>
+        <div id="quizOptions" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        <div id="quizFeedback" style="margin-top: 12px; font-weight: 600; min-height: 24px;"></div>
+      </div>
+      
+      <div id="quizResult" style="display: none; text-align: center;">
+        <h3 id="quizScoreText" style="font-size: 1.3rem; margin-bottom: 8px;"></h3>
+        <p id="quizResultMessage" style="margin-bottom: 15px;"></p>
+        <button class="btn" id="restartQuizBtn">Try Again 🔄</button>
       </div>
     </div>
   </div>
@@ -115,6 +115,7 @@
       <button class="btn" id="closeEggBtn">Yehey! ❤️</button>
     </div>
   </div>
+
   <script src="script.js?v=7"></script>
 </body>
 </html>
