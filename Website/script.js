@@ -67,7 +67,7 @@ if (noteBtn && letterBtn) {
   });
 }
 
-// --- 3. Floating Background ---
+// --- 3. Floating Background (Pink/Red Aesthetic) ---
 const canvas = document.getElementById('hearts');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -91,7 +91,9 @@ if (canvas) {
       this.size = Math.random() * 6 + 3; 
       this.speedY = Math.random() * 1 + 0.5;
       this.opacity = Math.random() * 0.4 + 0.1;
-      this.color = Math.random() > 0.5 ? '#ffffff' : '#ffb3c6';
+      
+      const colors = ['#ff7eb3', '#ff758c', '#ff8da1', '#ffffff'];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
     }
     update() {
       this.y -= this.speedY;
@@ -119,7 +121,7 @@ if (canvas) {
   animate();
 }
 
-// --- 4. Auto-Generate Photo Gallery, Fullscreen & Auto-Scroll ---
+// --- 4. Auto-Generate Photo Gallery ---
 const photoGallery = document.getElementById('photoGallery');
 const photoModal = document.getElementById('photoModal');
 const expandedImg = document.getElementById('expandedImg');
@@ -169,7 +171,7 @@ if (photoGallery) {
       } else {
         photoGallery.scrollBy({ left: 212, behavior: 'smooth' });
       }
-    }, 2500); 
+    }, 4500); // 4.5 seconds for a slower, smooth scroll
   };
 
   startAutoScroll();
@@ -250,12 +252,15 @@ if (musicBtn && bgMusic) {
   });
 }
 
-// --- 7. Tap-to-Heart Effect ---
+// --- 7. Tap-to-Heart Effect (Pink Aesthetic) ---
 document.addEventListener('click', (e) => {
   if(e.target.tagName.toLowerCase() === 'button' || e.target.tagName.toLowerCase() === 'img') return;
 
   const heart = document.createElement('div');
-  heart.innerHTML = '💖';
+  
+  const heartEmojis = ['💖', '💗', '❤️', '💕'];
+  heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  
   heart.className = 'tap-heart';
   
   heart.style.left = `${e.pageX}px`;
@@ -268,7 +273,7 @@ document.addEventListener('click', (e) => {
   }, 1200);
 });
 
-// --- 8. Voice Note Player (Pauses BG Music) ---
+// --- 8. Voice Note Player ---
 const playVoiceBtn = document.getElementById('playVoiceBtn');
 const voiceNote = document.getElementById('voiceNote');
 
@@ -320,4 +325,119 @@ if (mainTitle && easterEggModal && closeEggBtn) {
   closeEggBtn.addEventListener('click', () => {
     easterEggModal.classList.remove('active');
   });
+}
+
+// --- 10. Relationship Quiz Logic ---
+const quizQuestions = [
+  {
+    q: "1. Sino ang mas seloso sa ating dalawa?",
+    options: ["A. Ikaw (Maldita style)", "B. Ako (Ang selosong asawa)", "C. Pareho lang tayong chill", "D. Yung kabet HAHAHA"],
+    correct: 1,
+    feedback: ["Mali, ako yun!", "Alam na alam! Sobrang seloso ko kaya 😘", "Chill? Weh HAHA", "Luh, walang kabet! 😂"]
+  },
+  {
+    q: "2. Saan tayo nag first monthsary?",
+    options: ["A. Sa bahay lang natulog", "B. Ecopark at Digos", "C. Sa mall nag-ikot", "D. Wala, inaway mo ko nun eh hahaha"],
+    correct: 1, 
+    feedback: ["Di tayo natulog lang noh!", "Tama! Dun tayo nag-date sa Ecopark sa Digos, the best memory! 🥰", "Mali! Maganda view natin nun ah.", "Huy hindi ah! Sweet kaya natin nun! 😂"]
+  },
+  {
+    q: "3. May choice ka pa ba na tanggapin ako kahit ganito ugali ko?",
+    options: ["A. Meron pa naman konti", "B. Wala nang choice! Tanggap na tanggap na 😘", "C. Pag-iisipan ko muna ng 10 years", "D. Pass muna haha"],
+    correct: 1,
+    feedback: ["Mali, wala ka nang choice!", "Tama! Accept nalang, wala ka nang choice AHAHAH", "Tagal naman nyan!", "Bawal mag-pass! 😂"]
+  },
+  {
+    q: "4. Sino lang ang nagpapatibok ng puso at utak ko araw-araw?",
+    options: ["A. Ikaw lang (pag mabait)", "B. Ikaw lang, wala nang iba! 😘", "C. Yung milk tea", "D. Kabet (joke lang)"],
+    correct: 1,
+    feedback: ["Kahit galit ka ikaw pa rin!", "Perfect! Ikaw lang talaga asawa ko.", "Sarap nga ng milk tea pero ikaw pa rin!", "Naku po joke lang talaga yun! 😂"]
+  },
+  {
+    q: "5. Ilang buwan na tayong nagmamahalan ngayong August 21?",
+    options: ["A. 1st Month", "B. 2nd Month", "C. 3rd Month", "D. 4th Month! Happy Monthsary! 🎉"],
+    correct: 3,
+    feedback: ["Luh lumipas na yun!", "Mali po!", "Dating buwan pa yun!", "Happy 4th Monthsary Asawa ko! I love you so much! ❤️"]
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+
+function loadQuizQuestion() {
+  const qEl = document.getElementById('quizQuestion');
+  const optEl = document.getElementById('quizOptions');
+  const fbEl = document.getElementById('quizFeedback');
+  
+  if (!qEl) return;
+
+  fbEl.textContent = "";
+  const current = quizQuestions[currentQ];
+  qEl.textContent = current.q;
+  optEl.innerHTML = "";
+
+  current.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-outline';
+    btn.style.fontSize = '0.9rem';
+    btn.style.padding = '8px 12px';
+    btn.textContent = opt;
+    btn.onclick = () => checkQuizAnswer(idx);
+    optEl.appendChild(btn);
+  });
+}
+
+function checkQuizAnswer(selected) {
+  const current = quizQuestions[currentQ];
+  const fbEl = document.getElementById('quizFeedback');
+  
+  if (selected === current.correct) {
+    score++;
+    fbEl.style.color = '#22c55e';
+    fbEl.textContent = current.feedback[selected];
+  } else {
+    fbEl.style.color = '#ef4444';
+    fbEl.textContent = current.feedback[selected];
+  }
+
+  const buttons = document.querySelectorAll('#quizOptions button');
+  buttons.forEach(b => b.disabled = true);
+
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < quizQuestions.length) {
+      loadQuizQuestion();
+    } else {
+      showQuizResults();
+    }
+  }, 1600);
+}
+
+function showQuizResults() {
+  document.getElementById('quizContainer').style.display = 'none';
+  const resultDiv = document.getElementById('quizResult');
+  resultDiv.style.display = 'block';
+  
+  document.getElementById('quizScoreText').textContent = `Score: ${score}/${quizQuestions.length}`;
+  
+  const msgEl = document.getElementById('quizResultMessage');
+  if (score === quizQuestions.length) {
+    msgEl.textContent = "Perfect! Kilalang-kilala mo talaga asawa mo! Walang choice, love na love pa rin kita! 😘❤️";
+  } else if (score >= 3) {
+    msgEl.textContent = "Great score! Pasado ka pa rin asawa ko, mahal pa rin kita sobra! 😘";
+  } else {
+    msgEl.textContent = "Hala mababa score! Pero okay lang, wala ka pa ring choice, akin ka pa rin HAHAHA 😘";
+  }
+}
+
+document.getElementById('restartQuizBtn')?.addEventListener('click', () => {
+  currentQ = 0;
+  score = 0;
+  document.getElementById('quizResult').style.display = 'none';
+  document.getElementById('quizContainer').style.display = 'block';
+  loadQuizQuestion();
+});
+
+if (document.getElementById('quizQuestion')) {
+  loadQuizQuestion();
 }
