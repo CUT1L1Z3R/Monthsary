@@ -128,7 +128,7 @@ const expandedImg = document.getElementById('expandedImg');
 const closePhotoBtn = document.getElementById('closePhotoBtn');
 
 if (photoGallery) {
-  const totalPhotos = 38; 
+  const totalPhotos = 41; 
   
   for (let i = 1; i <= totalPhotos; i++) {
     const img = document.createElement('img');
