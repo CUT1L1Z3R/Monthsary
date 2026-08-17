@@ -337,7 +337,7 @@ const quizQuestions = [
   },
   {
     q: "2. Saan tayo nag first monthsary?",
-    options: ["A. Sa bahay lang natulog", "B. Ecopark at Digos", "C. Sa mall nag-ikot", "D. Wala, inaway mo ko nun eh hahaha"],
+    options: ["A. Sa bahay lang natulog", "B. Ecopark sa Digos", "C. Sa mall nag-ikot", "D. Wala, inaway mo ko nun eh hahaha"],
     correct: 1, 
     feedback: ["Di tayo natulog lang noh!", "Tama! Dun tayo nag-date sa Ecopark sa Digos, the best memory! 🥰", "Mali! Maganda view natin nun ah.", "Huy hindi ah! Sweet kaya natin nun! 😂"]
   },
