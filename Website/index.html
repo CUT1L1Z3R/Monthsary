@@ -15,11 +15,12 @@
 
   <!-- THE FIX: Safe centering without permanently trapping the scroll -->
   <style>
-    html, body {
+   html, body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      overflow-x: hidden; /* Only stops left/right scrolling */
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden; /* Absolutely no scrolling allowed, ever */
     }
     .landing-wrapper {
       display: flex;
