@@ -3,132 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  
-  <title>Loading...</title>
-  
-  <meta property="og:title" content="May secret message ka! 💌">
-  <meta property="og:description" content="Bawal munang silipin, hintayin ang midnight ng August 21! 🤫✨">
-  <meta property="og:type" content="website">
-
+  <title>Hi Maldita 😘</title>
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
-  <link rel="stylesheet" href="style.css?v=7">
-
-  <!-- THE FIX: Safe centering without permanently trapping the scroll -->
-  <style>
-   html, body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden; /* Absolutely no scrolling allowed, ever */
-    }
-    .landing-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .landing-card {
-      margin: 0 !important;
-      width: 100%;
-      max-width: 360px;
-    }
-    .lock-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #ff7eb3, #ff758c);
-      z-index: 99999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .lock-card {
-      background: white;
-      padding: 30px 25px;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 340px;
-      width: 100%;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    }
-  </style>
 </head>
 <body>
 
-  <canvas id="hearts" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;"></canvas>
+  <!-- Floating Hearts Background -->
+  <canvas id="hearts"></canvas>
 
-  <!-- ================= MIDNIGHT LOCK OVERLAY ================= -->
-  <div id="lockOverlay" class="lock-overlay" style="display: flex;">
-    <div class="lock-card">
-      <span style="font-size: 3rem;">🔒</span>
-      <h2 style="margin: 10px 0; color: #ff477e;">Secret Surprise Loading...</h2>
-      <p style="font-size: 0.9rem; color: #555; margin-bottom: 20px;">
-        This little website is securely locked and will automatically open for my favorite maldita on August 21! 💖
-      </p>
-      
-      <div class="timer-container" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
-        <div class="time-box" style="background: #fff0f5; padding: 8px; border-radius: 10px; min-width: 45px;"><span id="lockDays" style="font-size: 1.1rem; font-weight: bold; color: #ff477e;">00</span><br><small style="font-size: 0.65rem; color: #666;">Days</small></div>
-        <div class="time-box" style="background: #fff0f5; padding: 8px; border-radius: 10px; min-width: 45px;"><span id="lockHours" style="font-size: 1.1rem; font-weight: bold; color: #ff477e;">00</span><br><small style="font-size: 0.65rem; color: #666;">Hours</small></div>
-        <div class="time-box" style="background: #fff0f5; padding: 8px; border-radius: 10px; min-width: 45px;"><span id="lockMins" style="font-size: 1.1rem; font-weight: bold; color: #ff477e;">00</span><br><small style="font-size: 0.65rem; color: #666;">Mins</small></div>
-        <div class="time-box" style="background: #fff0f5; padding: 8px; border-radius: 10px; min-width: 45px;"><span id="lockSecs" style="font-size: 1.1rem; font-weight: bold; color: #ff477e;">00</span><br><small style="font-size: 0.65rem; color: #666;">Secs</small></div>
-      </div>
-      
-      <p style="font-size: 0.8rem; font-style: italic; color: #888;">Bawal munang silipin, hintayin ang midnight! 🤫✨</p>
-    </div>
+  <div class="landing-page" id="landingPage">
+    <h1 class="landing-title">Hi Maldita 😘</h1>
+    <p class="landing-text">I made something special for you.</p>
+    <button class="btn catch-btn" id="catchMeBtn">Open Me 💝</button>
   </div>
 
-  <script>
-    const unlockDate = new Date('August 21, 2026 00:00:00').getTime();
-    const lockOverlay = document.getElementById('lockOverlay');
-
-    function checkLock() {
-      const now = new Date().getTime();
-      const distance = unlockDate - now;
-
-      if (distance > 0) {
-        document.title = "Loading..."; 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (document.getElementById('lockDays')) {
-          document.getElementById('lockDays').textContent = days.toString().padStart(2, '0');
-          document.getElementById('lockHours').textContent = hours.toString().padStart(2, '0');
-          document.getElementById('lockMins').textContent = mins.toString().padStart(2, '0');
-          document.getElementById('lockSecs').textContent = secs.toString().padStart(2, '0');
-        }
-      } else {
-        if (lockOverlay) lockOverlay.style.display = 'none';
-        document.title = "Happy 4th Monthsary!"; 
-        clearInterval(timerInterval); 
-      }
-    }
-
-    checkLock(); 
-    const timerInterval = setInterval(checkLock, 1000);
-  </script>
-  <!-- ================= END OF LOCK ================= -->
-
-  <!-- Landing Page Container -->
-  <div class="landing-wrapper">
-    <div class="card landing-card" style="text-align: center;">
-      <div class="icon-wrapper">💌</div>
-      <h1>Hi Maldita! 😜</h1>
-      <p style="margin: 15px 0 25px 0;">May surprise ako sa'yo para sa 4th monthsary natin. Pero subukan mo munang pindutin 'to kung kaya mo!</p>
-      
-      <!-- Runaway Catch Me Button -->
-      <button class="btn" id="catchMeBtn">Open Surprise ✨</button>
-    </div>
-  </div>
-
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
