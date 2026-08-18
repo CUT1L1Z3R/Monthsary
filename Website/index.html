@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
   <title>Loading...</title>
+  
+  <meta property="og:title" content="May secret message ka! 💌">
+  <meta property="og:description" content="Bawal munang silipin, hintayin ang midnight ng August 21! 🤫✨">
+  <meta property="og:type" content="website">
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -65,7 +71,7 @@
       const distance = unlockDate - now;
 
       if (distance > 0) {
-        // OPTIMIZATION 3: Safest way to update browser tab title
+        // Keeps the actual browser tab hidden
         document.title = "Loading..."; 
         
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -80,11 +86,11 @@
           document.getElementById('lockSecs').textContent = secs.toString().padStart(2, '0');
         }
       } else {
-        // Unlock site
+        // Unlock site when time is reached
         if (lockOverlay) lockOverlay.style.display = 'none';
         document.title = "Happy 4th Monthsary!"; 
         
-        // OPTIMIZATION 2: Stop the timer completely so it doesn't drain battery
+        // Stop the timer completely so it doesn't drain battery
         clearInterval(timerInterval); 
       }
     }
@@ -103,6 +109,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
