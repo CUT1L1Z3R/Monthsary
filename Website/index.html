@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title id="pageTitle">Loading...</title>
+  <title>Loading...</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
   <canvas id="hearts"></canvas>
 
-  <div id="lockOverlay" class="lock-overlay" style="display: none;">
+  <div id="lockOverlay" class="lock-overlay" style="display: flex;">
     <div class="lock-card">
       <span style="font-size: 3rem;">🔒</span>
       <h2 style="margin: 10px 0; color: #ff477e;">Secret Surprise Loading...</h2>
@@ -56,17 +56,17 @@
   </style>
 
   <script>
+    // Target unlock date
     const unlockDate = new Date('August 21, 2026 00:00:00').getTime();
     const lockOverlay = document.getElementById('lockOverlay');
-    const pageTitle = document.getElementById('pageTitle');
 
     function checkLock() {
       const now = new Date().getTime();
       const distance = unlockDate - now;
 
       if (distance > 0) {
-        if (lockOverlay) lockOverlay.style.display = 'flex';
-        if (pageTitle) pageTitle.textContent = "Loading..."; // Keep it stealthy!
+        // OPTIMIZATION 3: Safest way to update browser tab title
+        document.title = "Loading..."; 
         
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -80,13 +80,18 @@
           document.getElementById('lockSecs').textContent = secs.toString().padStart(2, '0');
         }
       } else {
+        // Unlock site
         if (lockOverlay) lockOverlay.style.display = 'none';
-        if (pageTitle) pageTitle.textContent = "Happy 4th Monthsary!"; // Reveals it when unlocked!
+        document.title = "Happy 4th Monthsary!"; 
+        
+        // OPTIMIZATION 2: Stop the timer completely so it doesn't drain battery
+        clearInterval(timerInterval); 
       }
     }
 
-    setInterval(checkLock, 1000);
-    checkLock();
+    // Run once immediately to avoid layout shifts, then start the interval
+    checkLock(); 
+    const timerInterval = setInterval(checkLock, 1000);
   </script>
   <div class="container">
     <div class="card" style="text-align: center;">
@@ -98,6 +103,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
