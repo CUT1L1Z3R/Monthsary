@@ -4,41 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   
-  <!-- Stealth title by default so the browser tab is hidden -->
   <title>Loading...</title>
   
-  <!-- Social Media & Chat Preview Meta Tags (Fixes the sketchy link!) -->
   <meta property="og:title" content="May secret message ka! 💌">
   <meta property="og:description" content="Bawal munang silipin, hintayin ang midnight ng August 21! 🤫✨">
   <meta property="og:type" content="website">
 
-  <!-- Favicon (Pink Heart) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 
-  <!-- NEW FIX: Locks the screen height and perfectly centers the card -->
+  <!-- THE FIX: Safe centering without permanently trapping the scroll -->
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      overflow: hidden; /* This removes the scrollbar completely! */
+      min-height: 100vh;
+      overflow-x: hidden; /* Only stops left/right scrolling */
     }
     .landing-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
+      min-height: 100vh;
       width: 100%;
       padding: 20px;
       box-sizing: border-box;
-      position: relative;
-      z-index: 10;
     }
     .landing-card {
-      margin: 0 !important; /* Removes the extra margin from style.css */
+      margin: 0 !important;
       width: 100%;
-      max-width: 360px; /* Keeps it looking neat on desktop and mobile */
+      max-width: 360px;
     }
     .lock-overlay {
       position: fixed;
@@ -66,7 +61,6 @@
 </head>
 <body>
 
-  <!-- Floating Hearts Background Canvas -->
   <canvas id="hearts" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;"></canvas>
 
   <!-- ================= MIDNIGHT LOCK OVERLAY ================= -->
@@ -78,7 +72,6 @@
         This little website is securely locked and will automatically open for my favorite maldita on August 21! 💖
       </p>
       
-      <!-- Lock Countdown Timer -->
       <div class="timer-container" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
         <div class="time-box" style="background: #fff0f5; padding: 8px; border-radius: 10px; min-width: 45px;"><span id="lockDays" style="font-size: 1.1rem; font-weight: bold; color: #ff477e;">00</span><br><small style="font-size: 0.65rem; color: #666;">Days</small></div>
         <div class="time-box" style="background: #fff0f5; padding: 8px; border-radius: 10px; min-width: 45px;"><span id="lockHours" style="font-size: 1.1rem; font-weight: bold; color: #ff477e;">00</span><br><small style="font-size: 0.65rem; color: #666;">Hours</small></div>
@@ -91,7 +84,6 @@
   </div>
 
   <script>
-    // Target unlock date
     const unlockDate = new Date('August 21, 2026 00:00:00').getTime();
     const lockOverlay = document.getElementById('lockOverlay');
 
@@ -100,9 +92,7 @@
       const distance = unlockDate - now;
 
       if (distance > 0) {
-        // Keeps the actual browser tab hidden
         document.title = "Loading..."; 
-        
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -115,22 +105,18 @@
           document.getElementById('lockSecs').textContent = secs.toString().padStart(2, '0');
         }
       } else {
-        // Unlock site when time is reached
         if (lockOverlay) lockOverlay.style.display = 'none';
         document.title = "Happy 4th Monthsary!"; 
-        
-        // Stop the timer completely so it doesn't drain battery
         clearInterval(timerInterval); 
       }
     }
 
-    // Run once immediately to avoid layout shifts, then start the interval
     checkLock(); 
     const timerInterval = setInterval(checkLock, 1000);
   </script>
   <!-- ================= END OF LOCK ================= -->
 
-  <!-- Landing Page Container (Now perfectly centered!) -->
+  <!-- Landing Page Container -->
   <div class="landing-wrapper">
     <div class="card landing-card" style="text-align: center;">
       <div class="icon-wrapper">💌</div>
@@ -142,6 +128,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
